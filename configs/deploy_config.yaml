@@ -1,0 +1,19 @@
+# deploy_config.yaml
+# Configuración del entorno de producción e inferencia
+
+inference:
+  # Umbrales para la detección de YOLO OBB
+  conf_threshold: 0.25
+  iou_threshold: 0.7
+  gpu: false                       # Usar CPU por defecto (para CPU e inference-only lightweight)
+  
+  # Rutas a los checkpoints que se usarán en producción
+  yolo_model_path: "models/yolo/best.pt"
+  ocr_model_path: "models/ocr/easyocr_fixed3.pth"
+
+api:
+  # Configuración del servidor de FastAPI
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+  debug: false

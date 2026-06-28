@@ -1,0 +1,31 @@
+# requirements.txt
+# Dependencias principales del proyecto de digitalización de vencimientos
+
+# Entrenamientos y Cargas de Modelos
+ultralytics>=8.3.0
+easyocr>=1.7.2
+torch
+torchvision
+pyyaml>=6.0.0
+
+# Procesamiento de Datos e Imágenes
+opencv-python>=4.8.0
+numpy
+pandas
+pillow
+scikit-learn
+python-dateutil
+textdistance
+
+# Visualización y Notebooks
+matplotlib
+ipykernel
+
+# Servicio API Web
+fastapi
+uvicorn
+pydantic
+python-multipart
+
+# Tests y Verificaciones
+pytest
