@@ -81,7 +81,7 @@ pip install -r requirements.txt
 
 ## 4. Guía de Ejecución
 
-El entregable ofrece dos formas de uso principales:
+El entregable ofrece tres formas de uso principales:
 
 ### Método A: Ejecución en Línea de Comandos (CLI)
 Para procesar una imagen local, guardar los recortes y visualizar la imagen anotada, ejecuta `predict.py` pasando la ruta de la imagen:
@@ -134,6 +134,42 @@ uvicorn deployment.app:app --host 0.0.0.0 --port 8000
      }
      ```
    * **Documentación Interactiva (Swagger)**: Puedes interactuar con la API directamente desde tu navegador visitando [http://localhost:8000/docs](http://localhost:8000/docs).
+
+#### Consulta desde Clientes Ligeros (Consumo Veloz)
+Para evitar el retraso de carga de librerías y modelos en llamadas individuales (overhead de ~5s), puedes consultar la API activa usando herramientas ligeras nativas o scripts mínimos de Python sin dependencias pesadas:
+
+*   **Bash / curl**:
+    ```bash
+    curl -X POST -F "file=@/ruta/de/imagen.jpg" http://localhost:8000/predict
+    ```
+*   **PowerShell (Windows)**:
+    ```powershell
+    Invoke-RestMethod -Uri "http://localhost:8000/predict" -Method Post -Form @{file=[System.IO.File]::OpenRead("C:\ruta\de\imagen.jpg")}
+    ```
+
+---
+
+### Método C: CLI Interactivo (Bucle de Inferencia Optimizado)
+Si no deseas usar un servidor de red HTTP, puedes ejecutar el CLI interactivo. Este carga los modelos en memoria una sola vez en el arranque y luego procesa rutas de imágenes leídas secuencialmente desde la entrada estándar (`stdin`), entregando respuestas inmediatas en formato JSON por `stdout`.
+
+```bash
+python scripts/predict_interactive.py --output_dir "./predictions"
+```
+
+Al iniciar, imprimirá:
+`{"status": "ready", "message": "Modelos cargados. Ingrese rutas de imágenes línea por línea."}`
+
+A partir de ese momento, puedes escribir o redirigir (pipe) rutas de imágenes:
+```
+/ruta/a/la/imagen1.jpg
+/ruta/a/la/imagen2.jpg
+exit
+```
+
+Cada ruta enviada producirá de forma instantánea una salida JSON de una sola línea en `stdout`:
+```json
+{"success": true, "filename": "imagen1.jpg", "ocr_texts": ["25.DIC.27"], "normalized_dates": ["2027-12-25"], "expiration_date": "2027-12-25"}
+```
 
 ---
 

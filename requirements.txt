@@ -6,7 +6,7 @@ ultralytics>=8.3.0
 easyocr>=1.7.2
 torch
 torchvision
-pyyaml>=6.0.0
+pyyaml==6.0.3
 
 # Procesamiento de Datos e Imágenes
 opencv-python>=4.8.0

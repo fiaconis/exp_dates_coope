@@ -8,7 +8,7 @@ inference:
   gpu: false                       # Usar CPU por defecto (para CPU e inference-only lightweight)
   
   # Rutas a los checkpoints que se usarán en producción
-  yolo_model_path: "models/yolo/best.pt"
+  yolo_model_path: "models/yolo/train_4classes.pt"
   ocr_model_path: "models/ocr/easyocr_fixed3.pth"
 
 api:
