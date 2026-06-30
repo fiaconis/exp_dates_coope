@@ -9,7 +9,7 @@ Este paquete contiene la versión de producción simplificada y optimizada del p
 El pipeline de digitalización de fechas de vencimiento consta de 4 etapas que aseguran robustez frente a diferentes rotaciones, inclinaciones del envase y ruidos tipográficos del OCR.
 
 ### Etapa 1: Detección Orientada y Multi-Rotación (YOLO OBB)
-Para mitigar problemas de orientación de la imagen (por ejemplo, si la cámara tomó la foto en sentido vertical, lateral o de cabeza):
+Para mitigar problemas de orientación de la imagen (por ejemplo, si la cámara tomó la foto en sentido vertical, lateral o invertida):
 1. **Redimensionamiento**: La imagen de entrada es redimensionada a $600 \times 600$ píxeles.
 2. **Rotación en 4 Ejes**: Se generan dinámicamente 4 copias de la imagen en rotaciones de $0^\circ, 90^\circ, 180^\circ$ y $270^\circ$.
 3. **Inferencia**: El detector YOLO OBB (Oriented Bounding Boxes) analiza las 4 imágenes. Las cajas orientadas tienen en cuenta el ángulo de inclinación, localizando con precisión la región de la fecha.
