@@ -49,7 +49,8 @@ def startup_event():
         ocr_model_path=inf_cfg["ocr_model_path"],
         conf_threshold=inf_cfg.get("conf_threshold", 0.25),
         iou_threshold=inf_cfg.get("iou_threshold", 0.7),
-        gpu=inf_cfg.get("gpu", False)
+        gpu=inf_cfg.get("gpu", False),
+        model_storage_dir=inf_cfg.get("model_storage_dir")
     )
     print("API de Digitalización de Vencimientos cargada y lista para recibir peticiones.")
 

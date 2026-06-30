@@ -338,6 +338,8 @@ class EasyOCRInference:
         self.model_path = model_path
         self.gpu = gpu
         self.device = "cuda" if gpu and torch.cuda.is_available() else "cpu"
+        if not model_storage_dir and model_path:
+            model_storage_dir = os.path.dirname(os.path.abspath(model_path))
         self.model_storage_dir = model_storage_dir
         self._load()
 

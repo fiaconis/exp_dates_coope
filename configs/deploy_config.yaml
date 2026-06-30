@@ -10,6 +10,7 @@ inference:
   # Rutas a los checkpoints que se usarán en producción
   yolo_model_path: "models/yolo/train_4classes.pt"
   ocr_model_path: "models/ocr/easyocr_fixed3.pth"
+  model_storage_dir: "models/ocr"
 
 api:
   # Configuración del servidor de FastAPI

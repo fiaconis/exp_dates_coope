@@ -45,7 +45,8 @@ def main():
             ocr_model_path=inf_cfg["ocr_model_path"],
             conf_threshold=inf_cfg.get("conf_threshold", 0.25),
             iou_threshold=inf_cfg.get("iou_threshold", 0.7),
-            gpu=args.gpu or inf_cfg.get("gpu", False)
+            gpu=args.gpu or inf_cfg.get("gpu", False),
+            model_storage_dir=inf_cfg.get("model_storage_dir")
         )
     except Exception as e:
         print(json.dumps({"success": False, "error": f"Error inicializando pipeline: {str(e)}"}), file=sys.stderr)
