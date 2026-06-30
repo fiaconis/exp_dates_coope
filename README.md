@@ -175,6 +175,5 @@ Cada ruta enviada producirá de forma instantánea una salida JSON de una sola l
 
 ## 5. Recomendaciones para Puesta en Producción
 
-*   **Uso de GPU**: Aunque el pipeline soporta ejecución en CPU, se recomienda encarecidamente utilizar hardware con GPU compatible con **NVIDIA CUDA** para optimizar los tiempos de respuesta (reduciendo la latencia de inferencia de 2-3 segundos por imagen en CPU a menos de 400ms en GPU).
+*   **Uso de GPU**: Aunque el pipeline soporta ejecución en CPU, se recomienda utilizar hardware con GPU compatible con **NVIDIA CUDA** para optimizar los tiempos de respuesta.
 *   **Ajuste de Umbrales**: Si el detector pasa por alto fechas o genera falsos positivos, puedes ajustar los valores `conf_threshold` y `iou_threshold` en `configs/deploy_config.yaml`.
-*   **Dockerización**: Si deseas contenerizar la aplicación, puedes usar como base una imagen de CUDA como `nvidia/cuda:11.8.0-runtime-ubuntu22.04` o una imagen oficial de Python con PyTorch, instalar los requisitos y exponer el puerto `8000` mediante uvicorn.
